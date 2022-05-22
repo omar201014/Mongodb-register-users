@@ -54,7 +54,7 @@ userSchema.pre('save' , async function(){
 userSchema.methods.getSigninToken = async function(){
     const token = jwt.sign({_id : this._id.toString()} , "nodeJsCourse")
     this.tokens = this.tokens.concat(token)
-    await this.save()
+    await this.save()   //important! --> save the user's tokens to the database //
     return token;
 }
 
